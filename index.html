@@ -70,7 +70,6 @@
         };
 
         // geojson layer
-
         const layout1 = new GeoJSONLayer({
           url: './layout1.geojson',
         });
@@ -254,6 +253,9 @@
         const wall_fl5 = new GeoJSONLayer({
           url: './wall_fl5.geojson',
         });
+        const wall = new GeoJSONLayer({
+          url: './wall.geojson',
+        });
         const wall2_fl5 = new GeoJSONLayer({
           url: './wall2_fl5.geojson',
         });
@@ -396,7 +398,6 @@
         const pillar_roof_detail4 = new GeoJSONLayer({
           url: './pillar_roof_detail/pillar_roof_detail4.geojson',
         });
-
 
         layout1.renderer = {
           type: 'simple',
@@ -691,7 +692,7 @@
               {
                 type: 'extrude',
                 size: 0.3,
-              
+
                 material: {
                   color: '#DEC17F',
                 },
@@ -794,7 +795,7 @@
               {
                 type: 'path',
                 width: 25,
-                height: 0.2,
+                height: 0.4,
                 profile: 'quad',
                 material: {
                   color: '#A4794B',
@@ -1109,7 +1110,7 @@
               {
                 type: 'path',
                 width: 25,
-                height: 0.2,
+                height: 0.4,
                 profile: 'quad',
                 material: {
                   color: '#A4794B',
@@ -1242,6 +1243,24 @@
             ],
           },
         };
+        wall.renderer = {
+          type: 'simple',
+          color: '#93643C',
+          symbol: {
+            type: 'line-3d',
+            symbolLayers: [
+              {
+                type: 'path',
+                width: 1,
+                height: 15,
+                profile: 'quad',
+                material: {
+                  color: '#DEC17F',
+                },
+              },
+            ],
+          },
+        };
         wall2_fl5.renderer = {
           type: 'simple',
           color: '#93643C',
@@ -1269,7 +1288,7 @@
               {
                 type: 'path',
                 width: 1,
-                
+
                 height: 6,
                 profile: 'quad',
                 material: {
@@ -1788,8 +1807,6 @@
           },
         };
 
-
-
         pillar_roof_detail1.renderer = {
           type: 'simple',
           symbol: {
@@ -1801,7 +1818,7 @@
                 roll: 180,
                 resource: { primitive: 'cone' },
                 size: 2,
-                height:5,
+                height: 5,
                 material: {
                   color: '#DEC17F',
                 },
@@ -1809,7 +1826,6 @@
             ],
           },
         };
-
 
         pillar_roof_detail2.renderer = {
           type: 'simple',
@@ -1827,7 +1843,6 @@
           },
         };
 
-
         pillar_roof_detail3.renderer = {
           type: 'simple',
           symbol: {
@@ -1838,7 +1853,7 @@
                 width: 2.2,
                 roll: 180,
                 resource: { primitive: 'cone' },
-                height:3,
+                // height: 3,
                 size: 2,
                 material: {
                   color: '#DEC17F',
@@ -1847,7 +1862,6 @@
             ],
           },
         };
-
 
         pillar_roof_detail4.renderer = {
           type: 'simple',
@@ -1865,98 +1879,96 @@
           },
         };
 
-
-
-
+        const layers = [
+          layout1,
+          layout2,
+          stand1,
+          floor3,
+          floor5,
+          wall_fl5,
+          wall,
+          windows_fl5,
+          wall2_fl5,
+          roof,
+          floor1,
+          floor1_class1,
+          floor1_class2,
+          floor2,
+          under_floor_layer1,
+          under_floor_layer2,
+          stand2,
+          stand3,
+          stand4,
+          stand5,
+          round1,
+          round2,
+          stand6,
+          pillar_floor_2_class2,
+          pillar_floor_2_class3,
+          arc_fl1,
+          wall_fl1,
+          arc_fl2,
+          wall_fl2,
+          arc_fl3,
+          wall_fl3,
+          floor2_class1,
+          floor2_class2,
+          pillar_floor_1_class1,
+          pillar_floor_1_class2,
+          pillar_floor_1_class3,
+          pillar_floor_1_detail1,
+          pillar_floor_1_detail2,
+          pillar_floor_1_detail3,
+          pillar_floor_1_detail4,
+          pillar_floor_1_detail5,
+          pillar_floor_1_detail6,
+          pillar_floor_2_class1,
+          pillar_floor_2_detail1,
+          pillar_floor_2_detail2,
+          pillar_floor_2_detail3,
+          pillar_floor_2_detail4,
+          pillar_floor_2_detail5,
+          pillar_floor_2_detail6,
+          pillar_floor_2_detail7,
+          pillar_floor_2_detail8,
+          pillar_floor_2_detail9,
+          pillar_floor_2_detail10,
+          pillar_floor_3_class1,
+          pillar_floor_3_class2,
+          pillar_floor_3_detail1,
+          pillar_floor_3_detail2,
+          pillar_floor_3_detail3,
+          pillar_floor_3_detail4,
+          pillar_floor_3_detail5,
+          pillar_floor_3_detail6,
+          pillar_floor_3_detail7,
+          pillar_floor_3_detail8,
+          pillar_floor_3_detail9,
+          pillar_floor_3_detail10,
+          pillar_floor_4_class1,
+          pillar_floor_4_detail1,
+          pillar_floor_4_detail2,
+          pillar_floor_4_detail3,
+          pillar_floor_4_detail4,
+          pillar_floor_4_detail5,
+          pillar_floor_4_detail6,
+          pillar_floor_4_detail7,
+          pillar_floor_4_detail8,
+          pillar_floor_4_detail9,
+          pillar_floor_4_detail10,
+          pillar_roof_class1,
+          pillar_roof_detail1,
+          pillar_roof_detail2,
+          pillar_roof_detail3,
+          pillar_roof_detail4,
+        ];
         const map = new Map({
           basemap: 'topo-vector',
           // ground: "world-elevation",
           //  center :
 
-          layers: [
-            layout1,
-            layout2,
-            stand1,
-            floor3,
-            floor5,
-            wall_fl5,
-            windows_fl5,
-            wall2_fl5,
-            roof,
-            floor1,
-            floor1_class1,
-            floor1_class2,
-            floor2,
-            under_floor_layer1,
-            under_floor_layer2,
-            stand2,
-            stand3,
-            stand4,
-            stand5,
-            round1,
-            round2,
-            stand6,
-            pillar_floor_2_class2,
-            pillar_floor_2_class3,
-            arc_fl1,
-            wall_fl1,
-            arc_fl2,
-            wall_fl2,
-            arc_fl3,
-            wall_fl3,
-            floor2_class1,
-            floor2_class2,
-            pillar_floor_1_class1,
-            pillar_floor_1_class2,
-            pillar_floor_1_class3,
-            pillar_floor_1_detail1,
-            pillar_floor_1_detail2,
-            pillar_floor_1_detail3,
-            pillar_floor_1_detail4,
-            pillar_floor_1_detail5,
-            pillar_floor_1_detail6,
-            pillar_floor_2_class1,
-            pillar_floor_2_detail1,
-            pillar_floor_2_detail2,
-            pillar_floor_2_detail3,
-            pillar_floor_2_detail4,
-            pillar_floor_2_detail5,
-            pillar_floor_2_detail6,
-            pillar_floor_2_detail7,
-            pillar_floor_2_detail8,
-            pillar_floor_2_detail9,
-            pillar_floor_2_detail10,
-            pillar_floor_3_class1,
-            pillar_floor_3_class2,
-            pillar_floor_3_detail1,
-            pillar_floor_3_detail2,
-            pillar_floor_3_detail3,
-            pillar_floor_3_detail4,
-            pillar_floor_3_detail5,
-            pillar_floor_3_detail6,
-            pillar_floor_3_detail7,
-            pillar_floor_3_detail8,
-            pillar_floor_3_detail9,
-            pillar_floor_3_detail10,
-            pillar_floor_4_class1,
-            pillar_floor_4_detail1,
-            pillar_floor_4_detail2,
-            pillar_floor_4_detail3,
-            pillar_floor_4_detail4,
-            pillar_floor_4_detail5,
-            pillar_floor_4_detail6,
-            pillar_floor_4_detail7,
-            pillar_floor_4_detail8,
-            pillar_floor_4_detail9,
-            pillar_floor_4_detail10,
-            pillar_roof_class1,
-            pillar_roof_detail1,
-            pillar_roof_detail2,
-            pillar_roof_detail3,
-            pillar_roof_detail4,
-          ], //end layers
+          layers,
         });
-
         const view = new SceneView({
           container: 'viewDiv',
           map: map,
@@ -1966,7 +1978,7 @@
             heading: 120,
             tilt: 60,
           },
-          zoom: 100,
+          zoom: 3,
         });
 
         view.popup.defaultPopupTemplateEnabled = true;
